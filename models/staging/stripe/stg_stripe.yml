@@ -2,15 +2,18 @@ version: 2
 
 models:
   - name: stg_payments
+    description: Payments information from Stripe for the jaffle_shop app
     columns:
       - name: order_id
         tests:
           - not_null
       - name: payment_id
+        description: Primary key of the stg_payments table
         tests:
           - not_null
           - unique
       - name: status
+        description: "{{doc('payment_status')}}"
         test:
           - accepted_values:
               values:
