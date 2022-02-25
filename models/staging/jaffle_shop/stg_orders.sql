@@ -7,6 +7,8 @@ with orders as (
         status
 
     from {{ source('jaffle_shop', 'orders') }}
+
+    {{ limit_data_in_dev('_ETL_LOADED_AT', -10) }}
 )
 
 select * from orders
